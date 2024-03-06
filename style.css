@@ -1,0 +1,47 @@
+body {
+    width: 100%;
+    background-color: chartreuse;
+}
+
+table,
+td,
+th {
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    padding: 15px;
+    background-color: aqua;
+}
+
+#editForm {
+    background-color: aquamarine;
+    width: 100%;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid red;
+    border-radius: 4px;
+}
+
+button {
+    font-size: 12px;
+    color: blueviolet;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    background-color: burlywood;
+    font-weight: bold;
+}

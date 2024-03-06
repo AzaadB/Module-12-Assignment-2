@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>The Contact Book | Contact Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <br />
+    <form id="editForm">
+        <label for="firstname">First Name</label>
+        <input type="text" name="firstname" id="firstname"><br /><br />
+        <label for="lastname">Last Name</label>
+        <input type="text" name="lastname" id="lastname"><br /><br />
+        <label for="mobile">Mobile</label>
+        <input type="text" name="mobile" id="mobile"><br /><br />
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email"><br /><br />
+        <label for="avatar">Select a file:</label>
+        <input type="file" name="avatar" id="avatar"><br /><br />
+        <button type="submit" id="submitForm">Submit</button>
+    </form>
+    <br />
+    <button id="homeLink" type="button">Home</button>
+
+    <script src="config.js"></script>
+    <script>
+
+        document.getElementById("submitForm").addEventListener('click', submitForm);
+        document.getElementById("homeLink").addEventListener('click', homeLink);
+        //CREATING A FUNCTION FOR THE SUBMIT FORM//
+        function submitForm(e) {
+            e.preventDefault();
+            //creating the form data object//
+            const form = new FormData(document.querySelector('#editForm'));
+            //injected the apiKey into the form data object//
+            form.append('apiKey', apiKey);
+            //submitting the form data object to the server//
+            fetch(rootPath + 'controller/insert-contact', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json, *.*' },
+                body: form
+            })
+                .then(function (response) {
+                    //If successful//
+                    return response.text();
+                    //Recieves the data//
+                }).then(function (data) {
+                    if (data == "1") {
+                        alert("Contact added.");
+                        //calling the homeLink function//
+                        homeLink();
+                    } else {
+                        alert(data);
+                        //if there is a problem//
+                        //calling the homeLink function//
+                        homeLink();
+                    }
+                })
+
+        }
+        function homeLink() {
+            window.open("index.html", "_self");
+        }
+
+    </script>
+</body>
+
+</html>
